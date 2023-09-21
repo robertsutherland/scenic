@@ -66,14 +66,14 @@ class Dataset:
   classification tasks, `num_classes` is used for the configuring head of
   the model.
   """
-  train_iter: DatasetIterator | DatasetIteratorProvider | None = None
-  valid_iter: DatasetIterator | DatasetIteratorProvider | None = None
-  test_iter: DatasetIterator | DatasetIteratorProvider | None = None
+  train_iter: Union[DatasetIterator, DatasetIteratorProvider, None] = None
+  valid_iter: Union[DatasetIterator, DatasetIteratorProvider, None] = None
+  test_iter: Union[DatasetIterator, DatasetIteratorProvider, None] = None
   meta_data: Dict[str, Any] = dataclasses.field(default_factory=dict)
 
-  train_ds: Union[tf.data.Dataset, Dict[str, tf.data.Dataset]] | None = None
-  valid_ds: Union[tf.data.Dataset, Dict[str, tf.data.Dataset]] | None = None
-  test_ds: Union[tf.data.Dataset, Dict[str, tf.data.Dataset]] | None = None
+  train_ds: Union[tf.data.Dataset, Dict[str, tf.data.Dataset], None] = None
+  valid_ds: Union[tf.data.Dataset, Dict[str, tf.data.Dataset], None] = None
+  test_ds: Union[tf.data.Dataset, Dict[str, tf.data.Dataset], None] = None
 
 
 def maybe_pad_batch(batch: Dict[str, PyTree],
