@@ -32,7 +32,7 @@ def _fix_old_layernorm(transformer_params):
 
   fixed_params = copy.deepcopy(transformer_params)
   for resblock in fixed_params.values():
-    print(f"{resblock} contains keys {list(resblock.keys())}")
+    print(f"keys {list(resblock.keys())}")
     resblock['ln_0'] = resblock.pop('ln_1')
     resblock['ln_1'] = resblock.pop('ln_2')
 
