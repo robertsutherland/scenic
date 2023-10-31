@@ -26,6 +26,9 @@ def _fix_old_layernorm(transformer_params):
   ):
     # This checkpoint has the new format.
     return transformer_params
+  print("KEYS BEGIN")
+  print(transformer_params.keys())
+  print("KEYS END")
 
   fixed_params = copy.deepcopy(transformer_params)
   for resblock in fixed_params.values():
