@@ -22,7 +22,7 @@ def _fix_old_layernorm(transformer_params):
   """Fix layer norm numbering of old checkpoints."""
   if (
       'resblocks_0' in transformer_params
-      and 'ln_0' in transformer_params['resblocks.0']
+      and 'ln_0' in transformer_params['resblocks_0']
   ):
     # This checkpoint has the new format.
     return transformer_params
