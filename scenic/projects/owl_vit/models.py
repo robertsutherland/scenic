@@ -29,6 +29,12 @@ def _fix_old_layernorm(transformer_params):
   print("KEYS BEGIN")
   print(transformer_params.keys())
   print("KEYS END")
+  has_resblocks_0 = 'resblocks.0' in transformer_params
+  if has_resblocks_0:
+      print("resblocks_0")
+      print(transformer_params["resblocks.0"].keys())
+  else:
+      print("does not have")
 
   fixed_params = copy.deepcopy(transformer_params)
   for resblock in fixed_params.values():
