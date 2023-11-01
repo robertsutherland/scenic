@@ -26,19 +26,9 @@ def _fix_old_layernorm(transformer_params):
   ):
     # This checkpoint has the new format.
     return transformer_params
-  print("KEYS BEGIN")
-  print(transformer_params.keys())
-  print("KEYS END")
-  has_resblocks_0 = 'resblocks.0' in transformer_params
-  if has_resblocks_0:
-      print("resblocks_0")
-      print(transformer_params["resblocks.0"].keys())
-  else:
-      print("does not have")
 
   fixed_params = copy.deepcopy(transformer_params)
   for resblock in fixed_params.values():
-    print(f"keys {list(resblock.keys())}")
     resblock['ln_0'] = resblock.pop('ln_1')
     resblock['ln_1'] = resblock.pop('ln_2')
 
